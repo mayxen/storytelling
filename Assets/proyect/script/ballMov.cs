@@ -15,6 +15,15 @@ public class ballMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector3(Input.GetAxis("Horizontal")*speed,rb.velocity.y, Input.GetAxis("Vertical") * speed);
+
+        rb.AddRelativeForce(new Vector3(Input.GetAxis("Horizontal")*speed,rb.velocity.y, Input.GetAxis("Vertical") * speed),ForceMode.Acceleration);
+        if (Input.GetMouseButton(0))
+        {
+            transform.Rotate(Vector3.up * 10);
+        }
+        else if (Input.GetMouseButton(1))
+        {
+            transform.Rotate(Vector3.down * 10);
+        }
     }
 }
